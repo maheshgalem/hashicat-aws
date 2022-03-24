@@ -118,6 +118,27 @@ resource "aws_eip_association" "hashicat" {
   allocation_id = aws_eip.hashicat.id
 }
 
+resource "aws_s3_bucket" "hashicat" {
+  bucket_prefix = var.bucket_prefix
+  acl    = var.acl
+versioning {
+        enabled = var.versioning
+    }
+logging {
+        target_bucket = var.target_bucket
+        target_prefix = var.target_prefix
+    }
+server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = var.kms_master_key_id
+        sse_algorithm     = var.sse_algorithm
+      }
+    }
+  }
+tags = var.tags
+}
+
 resource "aws_instance" "hashicat" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = var.instance_type
