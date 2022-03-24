@@ -9,7 +9,4 @@ module "s3_bucket" {
         enabled = true
     }
 
-    inputs = {
-        bucket_prefix = "maheshgalem"
-    }
 }

@@ -45,6 +45,12 @@ variable "width" {
   description = "Image width in pixels."
 }
 
+variable "bucket_prefix" {
+  description = "(Optional, Forces new resource) Creates a unique bucket name beginning with the specified prefix. Conflicts with bucket."
+  type        = string
+  default     = "maheshgalem"
+}
+
 variable "placeholder" {
   default     = "placekitten.com"
   description = "Image-as-a-service URL. Some other fun ones to try are fillmurray.com, placecage.com, placebeard.it, loremflickr.com, baconmockup.com, placeimg.com, placebear.com, placeskull.com, stevensegallery.com, placedog.net"
